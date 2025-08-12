@@ -5,6 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mergington High School Activities</title>
     <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* ...existing styles... */
+      .participants-section {
+        margin-top: 1em;
+        background: #f8fafc;
+        border-radius: 6px;
+        padding: 0.75em 1em;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+      }
+      .participants-section h4 {
+        margin: 0 0 0.5em 0;
+        font-size: 1em;
+        color: #2563eb;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+      .participants-list {
+        margin: 0;
+        padding-left: 1.2em;
+        color: #374151;
+        font-size: 0.97em;
+      }
+      .participants-list li {
+        margin-bottom: 0.2em;
+        list-style-type: disc;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -26,7 +53,12 @@
         <form id="signup-form">
           <div class="form-group">
             <label for="email">Student Email:</label>
-            <input type="email" id="email" required placeholder="your-email@mergington.edu" />
+            <input
+              type="email"
+              id="email"
+              required
+              placeholder="your-email@mergington.edu"
+            />
           </div>
           <div class="form-group">
             <label for="activity">Select Activity:</label>
@@ -46,5 +78,29 @@
     </footer>
 
     <script src="app.js"></script>
+    <script>
+      // ...existing code...
+      function renderActivityCard(activity) {
+        // ...existing code...
+        // Add participants section
+        const participants = activity.participants || [];
+        const participantsList = participants.length
+          ? `<ul class="participants-list">${participants
+              .map((p) => `<li>${p}</li>`)
+              .join('')}</ul>`
+          : `<div style="color:#6b7280;font-size:0.95em;">No participants yet.</div>`;
+        // ...existing code...
+        return `
+      <div class="activity-card">
+        <!-- ...existing card content... -->
+        <div class="participants-section">
+          <h4>Participants</h4>
+          ${participantsList}
+        </div>
+      </div>
+    `;
+      }
+      // ...existing code...
+    </script>
   </body>
 </html>
